@@ -29,20 +29,19 @@ services:
      WEBPASSWORD: UniquePassword # Choose your own admin portal password or comment out to auto-generate.
    restart: unless-stopped
    
- # See https://github.com/ShiromMakkad/docker-pihole-sync  
- pihole-sync-receiver:
+ # See https://github.com/ShiromMakkad/docker-pihole-sync
+ pihole-sync-sender:
    image: shirom/pihole-sync:latest
-   container_name: pihole-sync-receiver
+   container_name: pihole-sync-sender
    volumes:
      - "./piholesync/root/:/root/"
-     - "./piholesync/etc-ssh/:/etc/ssh/"
-     - "./pihole/:/etc/pihole/"
-     - "./dnsmasq.d/:/etc/dnsmasq.d/"
+     - "./pihole:/mnt/etc-pihole:ro"
+     - "./dnsmasq.d:/mnt/etc-dnsmasq.d:ro"
    environment:
-     - "NODE=receiver"
-   ports:
-     - "2222:22"
-
+     - "NODE=sender"
+     - "REM_HOST=192.168.0.2"
+     - "REM_SSH_PORT=2222"
+     
 networks:
  pihole_network:
    driver: macvlan
