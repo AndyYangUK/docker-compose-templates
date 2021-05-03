@@ -8,7 +8,7 @@ services:
    image: pihole/pihole:latest
    networks:
      pihole_network:
-       ipv4_address: 192.168.0.200
+       ipv4_address: 192.168.0.200 # Enter desired IP address (that's unused) for the pihole container
    #cap_add:
    #  - NET_ADMIN # add if using DHCP in pihole
    volumes:
@@ -25,8 +25,8 @@ services:
      - 80/tcp
    environment:
      TZ: Europe/London
-     ServerIP: 192.168.0.200
-     WEBPASSWORD: ^y6yL5LY*4go^o
+     ServerIP: 192.168.0.200     # Enter desired IP address (that's unused) for the pihole container
+     WEBPASSWORD: ^y6yL5LY*4go^o # Choose your own admin portal password or comment out to auto-generate.
    restart: unless-stopped
    
  # See https://github.com/ShiromMakkad/docker-pihole-sync  
@@ -47,9 +47,9 @@ networks:
  pihole_network:
    driver: macvlan
    driver_opts:
-     parent: ovs_eth0
+     parent: ovs_eth0               # type 'ifconfig' to find name of ethernet card
    ipam:
      config:
        - subnet: 192.168.0.0/24
-         gateway: 192.168.0.1
-         ip_range: 192.168.0.200/32
+         gateway: 192.168.0.1       # IP of your router/modem
+         ip_range: 192.168.0.200/32 # Enter desired IP address (that's unused) for the pihole container
