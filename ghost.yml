@@ -1,0 +1,12 @@
+version: "3"
+services:
+  andyyang.co.uk:
+    image: ghost:latest
+    container_name: andyyang.co.uk
+    environment:
+      - url=https://andyyang.co.uk
+    ports:
+      - 8091:2368/tcp
+    restart: always
+    volumes:
+      - ./andyyang.co.uk:/var/lib/ghost/content
