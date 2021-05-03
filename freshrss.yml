@@ -1,0 +1,14 @@
+# docker-compose.yml
+ersion: "3"
+services:
+  freshrss:
+    container_name: freshrss
+    environment:
+      - PUID=1000
+      - PGID=100
+    image: linuxserver/freshrss:latest
+    ports:
+      - 7561:80/tcp
+    restart: unless-stopped
+    volumes:
+      - ./Config:/config
