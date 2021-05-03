@@ -1,0 +1,13 @@
+version: "3"
+services:
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
+    image: jlesage/nginx-proxy-manager:latest
+    ports:
+      - 443:4443/tcp
+      - 80:8080/tcp
+      - 81:8181/tcp
+    restart: unless-stopped
+    volumes:
+      - ./Config:/config
+
