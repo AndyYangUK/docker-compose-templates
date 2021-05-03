@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '2'
+
+services:
+  bitwarden:
+    image: vaultwarden/server:latest
+    container_name: bitwarden
+    restart: always
+    volumes:
+      -./Data:/data
+    environment:
+      - DOMAIN=https://bw.yourdomain.com
+   #   - ADMIN_TOKEN=secureAdminToken # OPTIONAL - enables the admin console at bw.youradmin.com/admin
+    ports: 
+      - '5430:80/tcp'
