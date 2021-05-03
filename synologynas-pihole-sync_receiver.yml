@@ -26,7 +26,7 @@ services:
    environment:
      TZ: Europe/London
      ServerIP: 192.168.0.200     # Enter desired IP address (that's unused) for the pihole container
-     WEBPASSWORD: ^y6yL5LY*4go^o # Choose your own admin portal password or comment out to auto-generate.
+     WEBPASSWORD: UniquePassword # Choose your own admin portal password or comment out to auto-generate.
    restart: unless-stopped
    
  # See https://github.com/ShiromMakkad/docker-pihole-sync  
